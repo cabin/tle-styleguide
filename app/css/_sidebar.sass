@@ -1,0 +1,66 @@
+.side-nav
+  display: none
+  +breakpoint($wider)
+    background-color: $salmon
+    color: $white
+    display: block
+    overflow-y: auto
+    +position(fixed, 0 null 0 0)
+    width: $side-nav-width
+
+.logo
+  +hide-text()
+  +retina-replace('img/logo', 160px 112px)
+  display: block
+  margin: 50px auto
+
+.toc, .toc__inner
+  list-style: none
+  padding: 0
+
+.toc
+  position: relative
+  border-bottom: 1px solid rgba($white, .2)
+  &:before
+    +position(absolute, null 0 0 0)
+    background-color: rgba($black, .1)
+    content: ""
+    height: 1px
+
+.toc__item, .toc__inner__item
+  color: $white
+  text-decoration: none
+  white-space: nowrap
+
+.toc__item
+  @extend %museo-sans-heading
+  border-top: 1px solid rgba($black, .1)
+  display: block
+  padding: 0 40px
+  position: relative
+  +reduce-font-dilation
+  +voffset(50px, 1px)
+  &:before
+    +position(absolute, 0 0 null 0)
+    background-color: rgba($white, .2)
+    content: ""
+    height: 1px
+    pointer-events: none
+
+.toc__inner
+  background: $black
+  overflow: hidden
+  padding: 20px 40px 30px
+  padding: 0 40px
+
+.toc__inner__item
+  display: inline-block
+  margin-top: 10px
+  // Vertical padding on the list itself breaks the collapse animation.
+  li:first-child > &
+    margin-top: 30px
+  li:last-child > &
+    margin-bottom: 30px
+
+.toc__inner__item--is-active, .toc__inner__item:hover
+  color: $salmon

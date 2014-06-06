@@ -1,0 +1,26 @@
+// Replace the element with the given retina image. Hide any text in the
+// element and size it to exactly fit the image.
+=retina-replace($filename, $background-size, $args...)
+  +hide-text
+  +retina-image($filename, $background-size, $retina-suffix: '@2x', $args...)
+  +size($background-size)
+
+
+// Switch from subpixel antialiasing to greyscale, which reduces artificially-
+// inflated font weight on Mac OS X. Particularly useful with light-on-dark
+// text or with `@font-face`d web fonts.
+// See <http://lists.w3.org/Archives/Public/www-style/2012Oct/0109.html>.
+=reduce-font-dilation($value: true)
+  @if $value
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+  @else
+    -webkit-font-smoothing: subpixel-antialiased
+    -moz-osx-font-smoothing: auto
+
+
+// Elements with uppercase text appear off-center visually due to unused
+// descender space. This allows for shifting them down a bit.
+=voffset($height, $offset)
+  line-height: $height - $offset
+  padding-top: $offset

@@ -1,0 +1,14 @@
+<ol class="toc">
+  <li ng-repeat="item in items"
+    ng-mouseenter="hover(item, true)" ng-mouseleave="hover(item, false)">
+    <a href="#/{{item.anchor}}" class="toc__item" ng-bind="item.heading"></a>
+    <ol class="toc__inner"
+      ng-show="item.hovered || activeItem[1] == item" ng-animate="animation">
+      <li ng-repeat="item in item.children">
+        <a href="#/{{item.anchor}}" class="toc__inner__item"
+          ng-class="{'toc__inner__item--is-active': activeItem[2] == item}"
+          ng-bind="item.heading"></a>
+      </li>
+    </ol>
+  </li>
+</ol>

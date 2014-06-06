@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en" ng-app="styleguide">
+<head>
+  <meta charset="utf-8">
+  <title>NEU Style Guide</title>
+  <!-- Made by Cabin <http://madebycabin.com/>. xo! -->
+  <meta name="viewport" content="width=560">
+
+  <!-- build:css styleguide.css -->
+  <link href="bower_components/normalize-css/normalize.css" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
+  <!-- endbuild -->
+  <script type="text/javascript" src="//use.typekit.net/wlg2nfm.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
+  <div class="content" toc-container>
+    <aside class="last-updated">Last updated <%= timestamp %></aside>
+
+    <nav class="side-nav">
+      <a class="logo" href="#/">NEU</a>
+      <div table-of-contents></div>
+    </nav>
+
+    <header class="header" fill-height>
+      <h1 no-toc>All together now.</h1>
+      <h2 no-toc>A guide to keeping TLE lookin&rsquo; sharp &amp; singin&rsquo; sweetly.</h2>
+    </header>
+
+    <section class="chapter">
+      <h1 class="chapter__header">Brand Guidelines</h1>
+
+      <section class="section" fill-height>
+        <h2 class="section__header">Brand Lens</h2>
+        <p class="section__description">Always keep in mind who we are, what we
+        stand for, and where we’re going.</p>
+
+        <img src="img/img-shop.png" class="col-x" alt="
+          Tender Loving Empire is a record label and marketplace for handmade
+          goods supporting independent artists, their works, and a thriving
+          community of fans, friends, and loyal patrons.
+        ">
+
+        <div class="chunk">
+          <div class="col-s block">
+            <h4 class="block__header">Mission</h4>
+            <p>Our mission is to cultivate a roster of extraordinary
+            independent artists and equip them with the tools and support
+            necessary to promote and sell their works at scale.</p>
+          </div>
+
+          <div class="col-s block">
+            <h4 class="block__header">Differentiation</h4>
+            <p>Equal parts record label and marketplace for handmade goods, our
+            hybrid approach fuels our interwoven community to thrive.</p>
+          </div>
+
+          <div class="col-s block">
+            <h4 class="block__header">Personality</h4>
+            <p>
+            - Authentic<br>
+            - Extraordinary<br>
+            - Inclusive<br>
+            - Experiential<br>
+            - Joyful
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <%= section('logo') %>
+      <%= section('colors') %>
+      <%= section('typography') %>
+      <%= section('grids') %>
+
+      <section class="section" fill-height>
+        <h2 class="section__header">Photography</h2>
+
+        <div class="chunk">
+          <div class="col-l block">
+            <h4 class="block__header">Marketing imagery</h4>
+            <img src="img/photo-framing.png" width="510" height="418" alt cb-at2x>
+          </div>
+
+          <div class="col-s block">
+            <p>Whether considering digital or print, think cinematic. No need
+            to constrain photos or videos—let them fill the frame entirely.</p>
+          </div>
+        </div>
+
+        <div class="chunk">
+          <div class="col-l block">
+            <h4 class="block__header">Product photography</h4>
+            <img src="img/photo-productShots.png" width="510" height="680" alt cb-at2x>
+          </div>
+
+          <div class="col-s block">
+            <p>Good product photography is the most powerful tool we have to
+            encourage online visitors to purchase our goods—so don’t skimp!</p>
+
+            <p>Product photos should be fully knocked out, or their background
+            color should be uniform and blemish-free. If shooting within an
+            environment, consider how to select one that doesn’t distract from
+            the item you are trying to highlight.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="chapter">
+      <h1 class="chapter__header">Collateral</h1>
+
+      <section class="section" fill-height>
+        <h2 class="section__header">Stationery</h2>
+        <img src="img/stationery.png" class="col-x" alt>
+      </section>
+
+      <section class="section" fill-height>
+        <h2 class="section__header">Merchandise</h2>
+        <img src="img/merch.png" class="col-x" alt>
+      </section>
+
+      <section class="section" fill-height>
+        <h2 class="section__header">Promo &amp; Packaging</h2>
+        <img src="img/packaging.png" class="col-x" alt>
+      </section>
+
+      <section class="section" fill-height>
+        <h2 class="section__header">Signage</h2>
+        <img src="img/signage.png" class="col-x" alt>
+      </section>
+    </section>
+  </div>
+
+  <!-- build:js vendor.js -->
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/angular-1.1.x/angular.js"></script>
+  <script src="bower_components/gsap/src/uncompressed/TweenLite.js"></script>
+  <script src="bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>
+  <script src="bower_components/gsap/src/uncompressed/plugins/ScrollToPlugin.js"></script>
+  <script src="bower_components/cabin-utils/dist/preload.js"></script>
+  <script src="bower_components/cabin-utils/dist/isRetina.js"></script>
+  <script src="bower_components/cabin-utils/dist/at2x.js"></script>
+  <script src="bower_components/cabin-utils/dist/scrolling.js"></script>
+  <!-- endbuild -->
+  <!-- build:js styleguide.js -->
+  <script src="app.js"></script>
+  <script src="templates.js"></script>
+  <script src="toc.js"></script>
+  <script src="viewport.js"></script>
+  <script src="colors.js"></script>
+  <script src="button.js"></script>
+  <!-- endbuild -->
+</body>
+</html>

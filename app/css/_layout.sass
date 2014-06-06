@@ -1,0 +1,110 @@
+// Simple grid system  /////////////////
+
+$grid-gutter: 30px
+@if $grid-gutter % 2 != 0
+  @warn "$grid-gutter should be even (was #{$grid-gutter})."
+
+// A container for grid items.
+.grid
+  +clearfix
+  margin-left: -($grid-gutter / 2)
+  margin-right: -($grid-gutter / 2)
+
+// A single block in the grid.
+.grid__item
+  +box-sizing(border-box)
+  float: left
+  padding-left: $grid-gutter / 2
+  padding-right: $grid-gutter / 2
+
+// Normally we would just call `+width` on the appropriate object classes, but
+// there are so many one-off items in this layout that it makes sense to
+// support setting grid classes directly in the markup.
+
+// Main content is on a very simple grid; there are only four sizes.
+//
+//    |         col-x         |
+//    |     col-l     | col-s |
+//    |   col-m   |   col-m   |
+//    | col-s | col-s | col-s |
+
+.col-s
+  @extend .grid__item
+  width: 240px + $grid-gutter
+.col-m
+  @extend .grid__item
+  width: 375px + $grid-gutter
+.col-l
+  @extend .grid__item
+  width: 510px + $grid-gutter
+.col-x
+  @extend .grid__item
+  width: 100%
+
+
+// Layout sections  ////////////////////
+
+// There are some non-layout styles in here as well... sorry!
+
+.chapter__header
+  display: none
+
+.section
+  $top-margin: 60px
+  @extend .grid
+  padding-top: (10px * 2 + 3) + $top-margin
+  padding-bottom: 100px
+  position: relative
+  &:before
+    +position(absolute, $top-margin ($grid-gutter / 2) null ($grid-gutter / 2))
+    border-top: 3px solid $black
+    content: ""
+    display: block
+.section__header
+  @extend %museo-sans-heading
+  @extend .col-s
+  font-size: 21px
+  margin: 0
+  margin-bottom: 20px
+.section__description
+  @extend .col-l
+  font-size: 21px
+  margin: 0 0 60px
+
+.chunk
+  +clearfix
+  clear: both
+  margin-top: 60px
+
+.block
+  margin-top: 40px
+  padding-top: 10px
+  position: relative
+  &:before
+    +position(absolute, 0 ($grid-gutter / 2) null ($grid-gutter / 2))
+    border-top: 1px solid $grey-e3
+    content: ""
+    display: block
+  ul
+    padding-left: 1em
+  > img
+    margin-top: 50px
+    margin-bottom: 70px
+
+.block--color-data
+  padding-bottom: 100px
+  &:before
+    display: none
+
+.block__header
+  @extend %museo-sans-heading
+  font-size: 14px
+  margin: 0 0 20px
+  img
+    margin: 4px 0
+
+.block > p:first-child
+  margin-top: 0
+
+.block img
+  display: block

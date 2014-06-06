@@ -1,0 +1,244 @@
+@import bourbon/dist/bourbon
+@import breakpoint-sass/stylesheets/breakpoint
+
+$content-padding: 20px
+$content-padding-desktop: 60px
+$side-nav-width: 250px
+$wider: 880px
+
+$black: #2b2b2b
+$white: #fff
+$gold: #988860
+$salmon: #ee6640
+$blue: #3d9ba1
+$grey-53: #535353
+$grey-93: #939393
+$grey-e3: #e3e3e3
+
+@import util
+@import layout
+@import sidebar
+
+
+%museo-sans
+  font-family: 'museo-sans', sans-serif
+  font-weight: 100
+  letter-spacing: .05em
+
+%museo-sans-heading
+  @extend %museo-sans
+  font-weight: 700
+  letter-spacing: .05em
+  text-transform: uppercase
+
+%minion-pro
+  font-family: 'minion-pro', serif
+  font-weight: 400
+  letter-spacing: 0
+
+%rule-before
+  position: relative
+  &:before
+    +position(absolute, 0 null null $grid-gutter / 2)
+    border-top: 1px solid $grey-e3
+    content: ""
+    display: block
+    width: 40px
+
+*
+  +box-sizing(border-box)
+
+a
+  color: $grey-53
+  cursor: pointer
+
+
+// Content  ////////////////////////////
+
+.content
+  @extend %museo-sans
+  font-size: 14px
+  line-height: 1.5
+  padding: 0 $content-padding
+  +breakpoint($wider)
+    // Make room for the sidebar.
+    margin-left: $side-nav-width
+    max-width: 1150px - $side-nav-width
+    padding: 0 $content-padding-desktop
+    position: relative
+
+.header
+  @extend .grid
+  padding-top: 220px
+  > h1
+    @extend %minion-pro
+    @extend .col-l
+    color: $salmon
+    font-size: 100px
+    font-style: italic
+    line-height: .9
+    margin: 0 0 55px
+    text-transform: uppercase
+  > h2
+    @extend %rule-before
+    @extend %museo-sans
+    @extend .col-m
+    color: $gold
+    font-size: 21px
+    margin: 25px 0
+    padding-top: 10px
+
+.last-updated
+  box-shadow: 0 1px 2px 0 rgba($black, .2)
+  font-size: 11px
+  padding: 0 15px
+  +position(absolute, 0 $content-padding null null)
+  text-transform: uppercase
+  +voffset(26px, 2px)
+  +breakpoint($wider)
+    right: $content-padding-desktop
+
+.button
+  @extend %museo-sans-heading
+  background: $blue
+  border-radius: 3px
+  color: $white
+  display: inline-block
+  font-size: 13px
+  margin-top: 20px
+  padding: 10px 20px
+  +reduce-font-dilation
+  text-decoration: none
+  &:hover
+    +background-image(linear-gradient(lighten($blue, 5%), $blue))
+  &:active
+    +background-image(linear-gradient($blue, lighten($blue, 5%)))
+
+hr
+  background: $grey-e3
+  border: none
+  height: 1px
+  margin-top: 20px
+
+
+// Colors  /////////////////////////////
+
+.color-swatch
+  +size(50px)
+  border-radius: 25px
+  float: left
+  margin: 10px
+  +transition(all 150ms $ease-in-out-quad)
+
+.color-swatch--is-selected
+  +size(70px)
+  border-radius: 40px
+  margin: 0
+
+.color-swatch--big
+  +size(200px)
+  border-radius: 100px
+  display: block
+  float: none
+  margin: 0 auto 50px
+
+.color-data
+  margin-top: 30px
+  position: relative
+  width: 100%
+  th, td
+    @extend %museo-sans
+    text-align: left
+    width: 50%
+  &:before
+    +position(absolute, -10px 0 -10px 0)
+    border: 1px solid $grey-e3
+    border-width: 1px 0
+    content: ""
+    display: block
+
+.color-swatch--gold
+  background: $gold
+.color-swatch--salmon
+  background: $salmon
+
++breakpoint($wider)
+  .cb-stick
+    +position(fixed, 0 null null 510 + $side-nav-width + $content-padding-desktop + $grid-gutter / 2)
+
+  .cb-stick--bottom
+    +position(absolute, auto 0 0 auto)
+
+
+// Typography  /////////////////////////
+
+.type-specimen
+  font-size: 18px
+  letter-spacing: .2em
+  line-height: 1.5
+  &:first-line
+    font-size: 80px
+    line-height: 1.2
+
+.type-specimen--museo-sans
+  @extend %museo-sans
+
+.type-specimen--minion-pro
+  @extend %minion-pro
+
+
+// Grids & Keylines  ///////////////////
+
+.grid-demo
+  margin-top: 30px
+  &:after
+    background: $black
+    content: " "
+    display: block
+    height: 30px
+
+.keyline
+  margin: 30px 0
+  &:before
+    background: $black
+    content: " "
+    display: inline-block
+    margin-right: $grid-gutter
+    vertical-align: middle
+    width: 240px
+.keyline--l
+  &:before
+    height: 7px
+    margin-top: -3px
+.keyline--m
+  &:before
+    height: 3px
+.keyline--s
+  &:before
+    height: 1px
+
+
+// Animation  //////////////////////////
+
+// Temporary for the silly button effect; from animate.css.
+.animated.hinge
+  +animation(hinge 1s ease-in-out)
+  +animation-fill-mode(forwards)
+
++keyframes(hinge)
+  0%
+    +transform(rotate(0))
+    +transform-origin(top left)
+  20%, 60%
+    +transform(rotate(80deg))
+    +transform-origin(top left)
+  40%
+    +transform(rotate(60deg))
+    +transform-origin(top left)
+  80%
+    opacity: 1
+    +transform(rotate(60deg) translateY(0))
+    +transform-origin(top left)
+  100%
+    opacity: 0
+    +transform(translateY(700px))

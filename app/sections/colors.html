@@ -1,0 +1,57 @@
+<section class="section" fill-height>
+  <h2 class="section__header">Colors</h2>
+
+  <p class="section__description">We like keepin’ it bold and simple, leaving
+  room for our artists’ works to shine.</p>
+
+  <div class="chunk">
+    <div class="col-s block">
+      <h4 class="block__header">Gold</h4>
+      <div class="color-swatch color-swatch--big color-swatch--gold"></div>
+
+      <table class="color-data">
+        <tr><th>Hex:</th><td>#988860</td></tr>
+        <tr><th>RGB:</th><td>152-136-96</td></tr>
+        <tr><th>CMYK:</th><td>37-40-70-8</td></tr>
+        <tr><th>Pantone:</th><td>7754 U</td></tr>
+        <tr><th>Metallic:</th><td>871 C</td></tr>
+      </table>
+    </div>
+
+    <div class="col-s block">
+      <h4 class="block__header">Salmon</h4>
+      <div class="color-swatch color-swatch--big color-swatch--salmon"></div>
+
+      <table class="color-data">
+        <tr><th>Hex:</th><td>#ee6640</td></tr>
+        <tr><th>RGB:</th><td>238-102-64</td></tr>
+        <tr><th>CMYK:</th><td>0-75-81-0</td></tr>
+        <tr><th>Pantone:</th><td>485 U</td></tr>
+      </table>
+    </div>
+
+    <div class="col-s block">
+      <p>Our primary colors are gold and salmon, but we have a full color
+      palette that can be explored as well. Rock it out!</p>
+    </div>
+  </div>
+
+  <div class="chunk" ng-controller="ColorSwatchCtrl">
+    <div class="col-l block">
+      <h4 class="block__header">Full Color Palette</h4>
+      <div
+        ng-repeat="color in colors"
+        ng-click="select(color)"
+        ng-mouseover="select(color)"
+        class="color-swatch" style="background-color: {{color}}"
+        ng-class="{'color-swatch--is-selected': selected === color}"
+      ></div>
+    </div>
+
+    <div class="col-s block block--color-data" cb-sticky-pos>
+      <table class="color-data" ng-if="selected" style="margin-top: 0">
+        <tr><th>Hex:</th><td ng-bind="selected"></td></tr>
+      </table>
+    </div>
+  </div>
+</section>

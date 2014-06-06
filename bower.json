@@ -1,0 +1,12 @@
+{
+  "name": "tle-styleguide",
+  "version": "1.0.0",
+  "dependencies": {
+    "bourbon": "~4.0.2",
+    "breakpoint-sass": "~2.4.2",
+    "cabin-utils": "git@github.com:cabin/utils.git#0.0.4",
+    "gsap": "1.11.8",
+    "normalize-css": "~3.0.1",
+    "underscore": "1.6.0"
+  }
+}
