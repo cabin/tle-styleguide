@@ -58,7 +58,7 @@ gulp.task 'downloads', ['clean:dist'], ->
 gulp.task 'useref', ['build', 'clean:dist'], ->
   gulp.src('build/index.html')
     .pipe($.useref.assets(searchPath: ['build', '.']))
-    .pipe($.if('**/*.js', $.ngmin()))
+    .pipe($.if(['**/*.js', '!**/vendor.js'], $.ngmin()))
     .pipe($.if('**/*.js', $.uglify()))
     .pipe($.if('**/*.css', $.csso()))
     .pipe($.rev())
@@ -94,7 +94,7 @@ gulp.task 'connect', (next) ->
     .listen ports.connect, ->
       console.log "[connect] Listening on http://localhost:#{ports.connect}/"
       next()
-  
+
 gulp.task 'watch', (next) ->
   gulp.watch(paths.coffee, ['coffee'])
   gulp.watch(paths.sass, ['sass'])
